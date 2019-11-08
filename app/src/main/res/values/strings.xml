@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">F&amp;B App</string>
+    <string name="fb_title"><![CDATA[F&B]]></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
