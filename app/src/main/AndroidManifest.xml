@@ -10,7 +10,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:fullBackupContent="true">
-        <activity android:name=".View.Activities.HomeActivity">
+        <activity android:name=".view.activities.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN"/>

@@ -1,4 +1,4 @@
-package com.influx.fbapp.View.Fragments
+package com.influx.fbapp.view.fragments
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -8,26 +8,26 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.influx.fbapp.R
-import com.influx.fbapp.ViewModel.ComboViewModel
+import com.influx.fbapp.viewmodel.DrinksViewModel
 
-class ComboFragment : Fragment() {
+class DrinksFragment : Fragment() {
 
     companion object {
-        fun newInstance() = ComboFragment()
+        fun newInstance() = DrinksFragment()
     }
 
-    private lateinit var viewModel: ComboViewModel
+    private lateinit var viewModel: DrinksViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.combo_fragment, container, false)
+        return inflater.inflate(R.layout.drinks_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(ComboViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(DrinksViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

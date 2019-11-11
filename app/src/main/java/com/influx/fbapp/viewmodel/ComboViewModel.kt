@@ -1,4 +1,4 @@
-package com.influx.fbapp.ViewModel
+package com.influx.fbapp.viewmodel
 
 import androidx.lifecycle.ViewModel;
 
