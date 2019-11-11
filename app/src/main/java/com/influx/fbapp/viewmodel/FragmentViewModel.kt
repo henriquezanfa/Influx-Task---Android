@@ -2,6 +2,6 @@ package com.influx.fbapp.viewmodel
 
 import androidx.lifecycle.ViewModel;
 
-class ComboViewModel : ViewModel() {
+class FragmentViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

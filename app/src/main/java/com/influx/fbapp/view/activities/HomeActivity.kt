@@ -1,14 +1,15 @@
 package com.influx.fbapp.view.activities
 
-import com.influx.fbapp.R
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import com.influx.fbapp.R
 import com.influx.fbapp.adapters.PagerAdapter
-import com.influx.fbapp.view.fragments.ComboFragment
-import com.influx.fbapp.view.fragments.CrepesFragment
-import com.influx.fbapp.view.fragments.DrinksFragment
+import com.influx.fbapp.view.fragments.Fragment
+import com.influx.fbapp.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.activity_home.*
 
 
@@ -18,17 +19,29 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        val model = ViewModelProviders.of(this)[HomeViewModel::class.java]
+        model.init()
+
+        model.getTitleList().observe(this, Observer<ArrayList<String>> { list -> setupTablayout(list) })
+    }
+
+
+    private fun setupTablayoutNames(titleArray: ArrayList<String>) {
+        val adapter = PagerAdapter(supportFragmentManager)
+        for (title in titleArray) {
+            adapter.addFragment(Fragment(), title)
+        }
+        viewPager.adapter = adapter
+        tabs.setupWithViewPager(viewPager)
+    }
+
+    private fun setupTablayout(titleArray: ArrayList<String>) {
         setSupportActionBar(toolbar)
-        toolbar_title.text = "F&B"
+        toolbar_title.text = applicationInfo.loadLabel(packageManager).toString()
 
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        val adapter = PagerAdapter(supportFragmentManager)
-        adapter.addFragment(ComboFragment(), "COMBOS")
-        adapter.addFragment(DrinksFragment(), "DRINKS")
-        adapter.addFragment(CrepesFragment(), "CREPES")
-        viewPager.adapter = adapter
-        tabs.setupWithViewPager(viewPager)
+        setupTablayoutNames(titleArray)
 
         val root = tabs.getChildAt(0)
         if (root is LinearLayout) {
