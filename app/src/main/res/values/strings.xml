@@ -4,4 +4,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="poster_image">poster image</string>
+  <string name="normal_button">Normal</string>
+  <string name="regular_button">Regular</string>
+  <string name="large_button">Large</string>
 </resources>

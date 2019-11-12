@@ -6,6 +6,7 @@
    android:layout_width="match_parent"
    android:layout_height="match_parent"
    android:background="@color/bg_color"
+   android:padding="@dimen/title_top_margin"
    tools:context=".view.activities.HomeActivity">
   
   <com.google.android.material.appbar.AppBarLayout
@@ -13,7 +14,6 @@
      android:layout_width="match_parent"
      android:layout_height="wrap_content"
      android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-     android:layout_marginTop="@dimen/title_top_margin"
      app:layout_constraintBottom_toTopOf="@+id/viewPager"
      app:layout_constraintEnd_toEndOf="parent"
      app:layout_constraintStart_toStartOf="parent"
@@ -41,20 +41,19 @@
        app:layout_constraintTop_toBottomOf="@+id/toolbar"
        android:id="@+id/view"
        app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintEnd_toEndOf="parent"
-       android:layout_marginStart="16dp"
-       android:layout_marginEnd="16dp"/>
+       app:layout_constraintEnd_toEndOf="parent"/>
     
     <com.google.android.material.tabs.TabLayout
        android:id="@+id/tabs"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        app:tabBackground="@color/colorPrimary"
-       android:layout_margin="@dimen/title_top_margin"
+       android:layout_alignParentEnd="true"
        app:tabIndicatorFullWidth="false"
        app:tabIndicatorColor="@color/tablayout_line"
        app:tabGravity="fill"
        app:tabMode="fixed"
+       android:layout_marginBottom="8dp"
        app:tabIndicatorHeight="1dp"
        app:tabTextColor="@color/tablayout_text_color"
        app:tabSelectedTextColor="@color/tablayout_selected_text_color"

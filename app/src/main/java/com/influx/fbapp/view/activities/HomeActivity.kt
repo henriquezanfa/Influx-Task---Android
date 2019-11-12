@@ -8,10 +8,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.influx.fbapp.R
 import com.influx.fbapp.adapters.PagerAdapter
+import com.influx.fbapp.model.RequestModel
 import com.influx.fbapp.view.fragments.Fragment
 import com.influx.fbapp.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.activity_home.*
-
 
 class HomeActivity : AppCompatActivity() {
 
@@ -22,28 +22,28 @@ class HomeActivity : AppCompatActivity() {
         val model = ViewModelProviders.of(this)[HomeViewModel::class.java]
         model.init()
 
-        model.getTitleList().observe(this, Observer<ArrayList<String>> { list -> setupTablayout(list) })
+        model.getResponse().observe(this, Observer<RequestModel> { request -> setupTablayout(request) })
     }
 
 
-    private fun setupTablayoutNames(titleArray: ArrayList<String>) {
+    private fun setupTablayoutNames(request: RequestModel) {
         val adapter = PagerAdapter(supportFragmentManager)
-        for (title in titleArray) {
-            adapter.addFragment(Fragment(), title)
+        for (food in request.foodList) {
+            adapter.addFragment(Fragment(food, request.currency), food.tabName)
         }
         viewPager.adapter = adapter
         tabs.setupWithViewPager(viewPager)
     }
 
-    private fun setupTablayout(titleArray: ArrayList<String>) {
+    private fun setupTablayout(request: RequestModel) {
         setSupportActionBar(toolbar)
         toolbar_title.text = applicationInfo.loadLabel(packageManager).toString()
 
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        setupTablayoutNames(titleArray)
+        setupTablayoutNames(request)
 
-        val root = tabs.getChildAt(0)
+        val root = tabs.getChildAt(1)
         if (root is LinearLayout) {
             root.showDividers = LinearLayout.SHOW_DIVIDER_MIDDLE
             val drawable = GradientDrawable()

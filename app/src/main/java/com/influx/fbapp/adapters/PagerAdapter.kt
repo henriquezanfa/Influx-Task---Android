@@ -10,7 +10,7 @@ class PagerAdapter(supportFragmentManager: FragmentManager) : FragmentStatePager
     private val mFragmentTitleList = ArrayList<String>()
 
     override fun getItem(position: Int): Fragment {
-        return mFragmentList.get(position)
+        return mFragmentList[position]
     }
 
     override fun getCount(): Int {
@@ -18,7 +18,7 @@ class PagerAdapter(supportFragmentManager: FragmentManager) : FragmentStatePager
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return mFragmentTitleList[position]
+        return mFragmentTitleList[position].toUpperCase()
     }
 
     fun addFragment(fragment: Fragment, title: String) {

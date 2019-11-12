@@ -1,6 +1,5 @@
 package com.influx.fbapp.service
 
-import com.influx.fbapp.model.RequestModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

@@ -1,16 +1,19 @@
 package com.influx.fbapp.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.influx.fbapp.model.FoodList
+import com.influx.fbapp.model.Fnblist
 import com.influx.fbapp.model.RequestModel
 import com.influx.fbapp.service.RetrofitInitializer
 import retrofit2.Call
 import retrofit2.Callback
+import retrofit2.Response
 
 class HomeViewModel : ViewModel() {
 
-    private val titleArray: MutableLiveData<ArrayList<String>> = MutableLiveData()
+    private val responseArray: MutableLiveData<RequestModel> = MutableLiveData()
+    private val productsArray: MutableLiveData<ArrayList<ArrayList<Fnblist>>> = MutableLiveData()
 
     fun init() {
         makeRequest()
@@ -20,25 +23,30 @@ class HomeViewModel : ViewModel() {
         val call = RetrofitInitializer().getData().getItems()
         call.enqueue(object : Callback<RequestModel?> {
             override fun onFailure(call: Call<RequestModel?>, t: Throwable) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Log.e("onFailure", t.localizedMessage)
             }
 
-            override fun onResponse(call: Call<RequestModel?>, response: retrofit2.Response<RequestModel?>) {
-                response.body()?.foodList?.let { makeTitleList(it) }
+            override fun onResponse(call: Call<RequestModel?>, response: Response<RequestModel?>) {
+                 populateObjects(response)
             }
         })
     }
 
-    private fun makeTitleList(foodList: MutableList<FoodList>) {
-        val titleList : ArrayList<String> = ArrayList()
-        for(food in foodList) {
-            if(!titleList.contains(food.tabName.toLowerCase()))
-                titleList.add(food.tabName!!.toUpperCase())
-        }
-        titleArray.value = titleList
+    private fun populateObjects(response: Response<RequestModel?>) {
+        response.body()?.let { makeFoodList(it) }
+
     }
 
-    fun getTitleList(): MutableLiveData<ArrayList<String>> {
-        return titleArray
+    private fun makeFoodList(request: RequestModel) {
+        responseArray.value = request
+    }
+
+
+    fun getResponse(): MutableLiveData<RequestModel> {
+        return responseArray
+    }
+
+    fun getProductsList() : MutableLiveData<ArrayList<ArrayList<Fnblist>>> {
+        return productsArray
     }
 }

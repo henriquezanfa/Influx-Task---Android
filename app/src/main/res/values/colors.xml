@@ -14,4 +14,7 @@
     <color name="horizontal_line_color">#3d3d3d</color>
     <color name="tablayout_text_color">#858585</color>
     <color name="tablayout_selected_text_color">#FFF</color>
+    
+    <color name="button_stroke">#424242</color>
+    <color name="button_text_color">#424242</color>
 </resources>
