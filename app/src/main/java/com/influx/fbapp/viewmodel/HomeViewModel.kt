@@ -3,17 +3,16 @@ package com.influx.fbapp.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.influx.fbapp.model.Fnblist
 import com.influx.fbapp.model.RequestModel
 import com.influx.fbapp.service.RetrofitInitializer
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class HomeViewModel : ViewModel() {
 
     private val responseArray: MutableLiveData<RequestModel> = MutableLiveData()
-    private val productsArray: MutableLiveData<ArrayList<ArrayList<Fnblist>>> = MutableLiveData()
 
     fun init() {
         makeRequest()
@@ -46,7 +45,4 @@ class HomeViewModel : ViewModel() {
         return responseArray
     }
 
-    fun getProductsList() : MutableLiveData<ArrayList<ArrayList<Fnblist>>> {
-        return productsArray
-    }
 }

@@ -8,4 +8,10 @@
   <string name="normal_button">Normal</string>
   <string name="regular_button">Regular</string>
   <string name="large_button">Large</string>
+  <string name="layout_border_image_view">imaage view to set the border</string>
+  <string name="productTitle">Product Title</string>
+  <string name="itemPrice">Item Price</string>
+  <string name="plus_button">+</string>
+  <string name="quantity_initial_text">0</string>
+  <string name="minus_button">-</string>
 </resources>
