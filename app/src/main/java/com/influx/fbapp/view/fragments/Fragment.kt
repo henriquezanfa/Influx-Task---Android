@@ -1,6 +1,7 @@
 package com.influx.fbapp.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,12 +10,13 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.influx.fbapp.R
 import com.influx.fbapp.adapters.FoodListAdapter
+import com.influx.fbapp.interfaces.IAdapterView
+import com.influx.fbapp.model.Fnblist
 import com.influx.fbapp.model.FoodList
 import com.influx.fbapp.viewmodel.FragmentViewModel
 import kotlinx.android.synthetic.main.fragment.*
 
-class Fragment(private val foodList: FoodList, private var currency: String) : Fragment() {
-
+class Fragment(private val foodList: FoodList, private var currency: String) : Fragment(), IAdapterView  {
     private lateinit var viewModel: FragmentViewModel
 
     override fun onCreateView(
@@ -29,8 +31,14 @@ class Fragment(private val foodList: FoodList, private var currency: String) : F
         viewModel = ViewModelProviders.of(this).get(FragmentViewModel::class.java)
 
         food_recycler_view.layoutManager  = LinearLayoutManager(activity)
-        food_recycler_view.adapter = context?.let { FoodListAdapter(foodList, it, currency) }
-
+        food_recycler_view.adapter = context?.let { FoodListAdapter(foodList, it, currency, this) }
     }
 
+    override fun onFoodAdd(fnblist: Fnblist, sizeSelected: String?) {
+        Log.i("onFoodAdd", fnblist.name  + " " + sizeSelected)
+    }
+
+    override fun onFoodRemove(fnblist: Fnblist, sizeSelected: String?) {
+        Log.i("onFoodRemove", fnblist.name + " " + sizeSelected)
+    }
 }

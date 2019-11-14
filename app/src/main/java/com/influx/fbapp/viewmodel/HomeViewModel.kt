@@ -12,7 +12,7 @@ import retrofit2.Response
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class HomeViewModel : ViewModel() {
 
-    private val responseArray: MutableLiveData<RequestModel> = MutableLiveData()
+    private val requestModel: MutableLiveData<RequestModel> = MutableLiveData()
 
     fun init() {
         makeRequest()
@@ -33,16 +33,14 @@ class HomeViewModel : ViewModel() {
 
     private fun populateObjects(response: Response<RequestModel?>) {
         response.body()?.let { makeFoodList(it) }
-
     }
 
     private fun makeFoodList(request: RequestModel) {
-        responseArray.value = request
+        requestModel.value = request
     }
 
-
-    fun getResponse(): MutableLiveData<RequestModel> {
-        return responseArray
+    fun getRequestModel(): MutableLiveData<RequestModel> {
+        return requestModel
     }
 
 }

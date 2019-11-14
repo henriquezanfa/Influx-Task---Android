@@ -19,10 +19,10 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val model = ViewModelProviders.of(this)[HomeViewModel::class.java]
-        model.init()
+        val homeViewModel = ViewModelProviders.of(this)[HomeViewModel::class.java]
+        homeViewModel.init()
 
-        model.getResponse().observe(this, Observer<RequestModel> { request -> setupTablayout(request) })
+        homeViewModel.getRequestModel().observe(this, Observer<RequestModel> { request -> setupTablayout(request) })
     }
 
 

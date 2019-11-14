@@ -5,7 +5,8 @@
     <color name="colorAccent">#FFF</color>
     
     <color name="tablayout_line">#bcb140</color>
-    
+    <color name="active_button">#ffdb00</color>
+
     <color name="white">#FFF</color>
     
     <color name="bg_color">#000</color>
