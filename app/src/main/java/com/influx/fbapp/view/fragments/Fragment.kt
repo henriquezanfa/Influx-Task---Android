@@ -1,7 +1,6 @@
 package com.influx.fbapp.view.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,11 @@ import com.influx.fbapp.model.FoodList
 import com.influx.fbapp.viewmodel.FragmentViewModel
 import kotlinx.android.synthetic.main.fragment.*
 
-class Fragment(private val foodList: FoodList, private var currency: String) : Fragment(), IAdapterView  {
+class Fragment(
+    private val foodList: FoodList,
+    private var currency: String,
+    private var interfaceAdapter: IAdapterView?
+) : Fragment(), IAdapterView  {
     private lateinit var viewModel: FragmentViewModel
 
     override fun onCreateView(
@@ -35,10 +38,10 @@ class Fragment(private val foodList: FoodList, private var currency: String) : F
     }
 
     override fun onFoodAdd(fnblist: Fnblist, sizeSelected: String?) {
-        Log.i("onFoodAdd", fnblist.name  + " " + sizeSelected)
+        interfaceAdapter?.onFoodAdd(fnblist, sizeSelected)
     }
 
     override fun onFoodRemove(fnblist: Fnblist, sizeSelected: String?) {
-        Log.i("onFoodRemove", fnblist.name + " " + sizeSelected)
+        interfaceAdapter?.onFoodRemove(fnblist, sizeSelected)
     }
 }

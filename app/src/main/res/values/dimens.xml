@@ -7,4 +7,5 @@
   <dimen name="text_view_margin_top">8dp</dimen>
   <dimen name="quantity_buttons_text_size">32sp</dimen>
   <dimen name="quantity_text_size">24sp</dimen>
+    <dimen name="bottom_sheet_default_peek_height">56</dimen>
 </resources>
