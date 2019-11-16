@@ -8,12 +8,8 @@ Repository for Influx task
 - Picasso for loading images
 
 
-## Weakness
-By now there is a lot to do:
-
-1) Add the control navbar
-2) Set the buttons for subitems
-3) Add skip and back button
-4) Tests 
-
-and many other adjustmens.
+## Improvements
+- I haven't succeed on set the recycler view for the Bottom Sheet.
+- On the lauch I should put somthing to wait the first request to show the UI and some dialog if there are some error on the request
+- I've not covered tests yet
+- None of the top buttons are setted, mainly because I didn't got it's goals
